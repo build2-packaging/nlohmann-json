@@ -21,6 +21,16 @@ lib{json}:
 #
 {hxx ixx txx}{*}:
 {
-  install         = include/
+  install         = include/nlohmann/
   install.subdirs = true
+}
+
+# TODO: find a better way to do this.
+../upstream/single_include/nlohmann/
+{
+  {hxx ixx txx}{*}:
+  {
+    install         = include/nlohmann/
+    install.subdirs = true
+  }
 }
