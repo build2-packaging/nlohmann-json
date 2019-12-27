@@ -1,5 +1,15 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <vector>
+#include <deque>
+#include <map>
+#include <set>
+#include <unordered_map>
+#include <unordered_set>
+#include <string>
 
-#include <nlohmann/version.hpp>
+
 #include <nlohmann/json.hpp>
 
 // for convenience
@@ -80,9 +90,7 @@ int main ()
 
     // parse explicitly
     auto j3 = json::parse("{ \"happy\": true, \"pi\": 3.141 }");
-  }
-
-  {
+    
     // explicit conversion to string
     std::string s = j.dump();    // {\"happy\":true,\"pi\":3.141}
 
@@ -114,28 +122,28 @@ int main ()
     std::cout << j_string << " == " << serialized_string << std::endl;
   }
 
-  {
-    // deserialize from standard input
-    json j;
-    std::cin >> j;
+  // {
+  //   // deserialize from standard input
+  //   json j;
+  //   std::cin >> j;
 
-    // serialize to standard output
-    std::cout << j;
+  //   // serialize to standard output
+  //   std::cout << j;
 
-    // the setw manipulator was overloaded to set the indentation for pretty printing
-    std::cout << std::setw(4) << j << std::endl;
-  }
+  //   // the setw manipulator was overloaded to set the indentation for pretty printing
+  //   std::cout << std::setw(4) << j << std::endl;
+  // }
 
-  {
-    // read a JSON file
-    std::ifstream i("file.json");
-    json j;
-    i >> j;
+  // {
+  //   // read a JSON file
+  //   std::ifstream i("file.json");
+  //   json j;
+  //   i >> j;
 
-    // write prettified JSON to another file
-    std::ofstream o("pretty.json");
-    o << std::setw(4) << j << std::endl;
-  }
+  //   // write prettified JSON to another file
+  //   std::ofstream o("pretty.json");
+  //   o << std::setw(4) << j << std::endl;
+  // }
 
   {
     // create an array using push_back
@@ -271,7 +279,7 @@ int main ()
     json j_ummap(c_ummap); // only one entry for key "three" is used
     // maybe {"one": true, "two": true, "three": true}
   }
-
+  
   {
     // a JSON value
     json j_original = R"({
@@ -332,35 +340,6 @@ int main ()
     //    "d": "e"
     //  }
     // }
-  }
-
-  {
-    // strings
-    std::string s1 = "Hello, world!";
-    json js = s1;
-    auto s2 = js.get<std::string>();
-    // NOT RECOMMENDED
-    std::string s3 = js;
-    std::string s4;
-    s4 = js;
-
-    // Booleans
-    bool b1 = true;
-    json jb = b1;
-    auto b2 = jb.get<bool>();
-    // NOT RECOMMENDED
-    bool b3 = jb;
-    bool b4;
-    b4 = jb;
-
-    // numbers
-    int i = 42;
-    json jn = i;
-    auto f = jn.get<double>();
-    // NOT RECOMMENDED
-    double f2 = jb;
-    double f3;
-    f3 = jb;
   }
 
 }

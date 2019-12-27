@@ -2,27 +2,17 @@ int_libs = # Interface dependencies.
 imp_libs = # Implementation dependencies.
 #import imp_libs += libhello%lib{hello}
 
-lib{json}: $include_dir/hxx{**} nlohmann/hxx{version-json} $imp_libs $int_libs
-
-# Include the generated version header into the distribution (so that we don't
-# pick up an installed one) and don't remove it when cleaning in src (so that
-# clean results in a state identical to distributed).
-#
-nlohmann/hxx{version-json}: in{version} $src_root/manifest
-{
-  dist  = true
-  clean = ($src_root != $out_root)
-}
+lib{json}: $include_dir/hxx{**} $imp_libs $int_libs
 
 # Build options.
 #
-cxx.poptions =+ "-I$out_root" "-I$src_root"
+cxx.poptions =+ "-I$include_dir" "-I$out_base" "-I$srcbase"
 
 # Export options.
 #
 lib{json}:
 {
-  cxx.export.poptions = "-I$out_root" "-I$src_root"
+  cxx.export.poptions =  "-I$include_dir" "-I$out_base" "-I$src_base"
   cxx.export.libs = $int_libs
 }
 
