@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <vector>
+#include <list>
 #include <deque>
 #include <map>
 #include <set>
