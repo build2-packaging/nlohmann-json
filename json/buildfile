@@ -2,13 +2,13 @@ int_libs = # Interface dependencies.
 imp_libs = # Implementation dependencies.
 #import imp_libs += libhello%lib{hello}
 
-lib{nlohmann-json}: {hxx ixx txx}{** -version} hxx{version} $imp_libs $int_libs
+lib{json}: $include_dir/hxx{**} nlohmann/hxx{version-json} $imp_libs $int_libs
 
 # Include the generated version header into the distribution (so that we don't
 # pick up an installed one) and don't remove it when cleaning in src (so that
 # clean results in a state identical to distributed).
 #
-hxx{version}: in{version} $src_root/manifest
+nlohmann/hxx{version-json}: in{version} $src_root/manifest
 {
   dist  = true
   clean = ($src_root != $out_root)
@@ -20,17 +20,17 @@ cxx.poptions =+ "-I$out_root" "-I$src_root"
 
 # Export options.
 #
-lib{nlohmann-json}:
+lib{json}:
 {
   cxx.export.poptions = "-I$out_root" "-I$src_root"
   cxx.export.libs = $int_libs
 }
 
-# Install into the nlohmann-json/ subdirectory of, say, /usr/include/
+# Install into the json/ subdirectory of, say, /usr/include/
 # recreating subdirectories.
 #
 {hxx ixx txx}{*}:
 {
-  install         = include/nlohmann-json/
+  install         = include/
   install.subdirs = true
 }
