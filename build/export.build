@@ -1,0 +1,6 @@
+$out_root/
+{
+  include nlohmann-json/
+}
+
+export $out_root/nlohmann-json/$import.target
