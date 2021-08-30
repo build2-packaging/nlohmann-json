@@ -2,7 +2,7 @@ import libs = nlohmann-json%lib{json}
 
 exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
 
-if($cxx.id != 'cl')
+if($cxx.class != 'msvc')
 {
     cxx.coptions += -Wno-unused-comparison -Wno-unused-result -Wno-unused-variable  # Ignore warnings for now.
 }
