@@ -5,6 +5,6 @@ exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
 switch $cxx.id
 {
     case 'gcc' | 'clang'
-        cxx.coptions += -Wno-unused-comparison -Wno-unused-result -Wunused-variable # Ignore warnings for now.
+        cxx.coptions += -Wno-unused-comparison -Wno-unused-result -Wno-unused-variable # Ignore warnings for now.
 }
 
