@@ -64,7 +64,7 @@ int main ()
     };
 
   }
-  
+
   {
     // a way to express the empty array []
     json empty_array_explicit = json::array();
@@ -91,7 +91,7 @@ int main ()
 
     // parse explicitly
     auto j3 = json::parse("{ \"happy\": true, \"pi\": 3.141 }");
-    
+
     // explicit conversion to string
     std::string s = j.dump();    // {\"happy\":true,\"pi\":3.141}
 
@@ -103,7 +103,7 @@ int main ()
     //     "pi": 3.141
     // }
   }
-  
+
   {
     // store a string in a JSON value
     json j_string = "this is a string";
@@ -283,7 +283,7 @@ int main ()
     json j_ummap(c_ummap); // only one entry for key "three" is used
     // maybe {"one": true, "two": true, "three": true}
   }
-  
+
   {
     // a JSON value
     json j_original = R"({
@@ -310,7 +310,7 @@ int main ()
     // }
 
     // calculate a JSON patch from two JSON values
-    json::diff(j_result, j_original);
+    auto x = json::diff(j_result, j_original);
     // [
     //   { "op":" replace", "path": "/baz", "value": ["one", "two", "three"] },
     //   { "op": "remove","path": "/hello" },
