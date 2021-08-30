@@ -170,6 +170,7 @@ int main ()
     const auto tmp = j[0].get<std::string>();
     j[1] = 42;
     bool foo = j.at(2);
+    assert(foo);
 
     // comparison
     j == "[\"foo\", 1, true]"_json;  // true
@@ -218,8 +219,10 @@ int main ()
     }
 
     // or simpler using count()
-    int foo_present = o.count("foo"); // 1
-    int fob_present = o.count("fob"); // 0
+    auto foo_present = o.count("foo"); // 1
+    auto fob_present = o.count("fob"); // 0
+    assert(foo_present == 1);
+    assert(fob_present == 0);
 
     // delete an entry
     o.erase("foo");
