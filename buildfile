@@ -1,4 +1,6 @@
-./: {*/ -build/ -upstream/} doc{README.md} manifest
+./ : {*/ -build/ -upstream/} manifest
+
+./ : upstream/doc{README.md LICENSE.MIT} upstream/doc/doc{**}
 
 # Don't install tests.
 #
