@@ -2,17 +2,17 @@ int_libs = # Interface dependencies.
 imp_libs = # Implementation dependencies.
 #import imp_libs += libhello%lib{hello}
 
-lib{json}: $include_dir/hxx{**} $imp_libs $int_libs
+lib{json}: include/hxx{**} $imp_libs $int_libs
 
 # Build options.
 #
-cxx.poptions =+ "-I$include_dir" "-I$out_base" "-I$srcbase"
+cxx.poptions =+ "-I$src_base/include" "-I$out_base/include"
 
 # Export options.
 #
 lib{json}:
 {
-  cxx.export.poptions =  "-I$include_dir" "-I$out_base" "-I$src_base"
+  cxx.export.poptions =  "-I$src_base/include" "-I$out_base/include"
   cxx.export.libs = $int_libs
 }
 
@@ -21,16 +21,6 @@ lib{json}:
 #
 {hxx ixx txx}{*}:
 {
-  install         = include/nlohmann/
+  install         = include/
   install.subdirs = true
-}
-
-# TODO: find a better way to do this.
-../upstream/single_include/nlohmann/
-{
-  {hxx ixx txx}{*}:
-  {
-    install         = include/nlohmann/
-    install.subdirs = true
-  }
 }

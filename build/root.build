@@ -12,5 +12,3 @@ cxx{*}: extension = cpp
 test.target = $cxx.target
 
 
-include_dir = $src_root/upstream/single_include
-
