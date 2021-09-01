@@ -1,6 +1,6 @@
 : 1
 name: nlohmann-json
-version: 3.9.1+1
+version: 3.9.1+2
 summary: "JSON for Modern C++"
 license: MIT
 description-file: README.md
