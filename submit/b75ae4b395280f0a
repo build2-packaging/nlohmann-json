@@ -1,0 +1,5 @@
+: 1
+name: nlohmann-json
+version: 3.8.0+2
+summary: "JSON for Modern C++"
+license: MIT
