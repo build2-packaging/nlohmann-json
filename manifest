@@ -3,7 +3,7 @@ name: nlohmann-json
 version: 3.10.2
 summary: "JSON for Modern C++"
 license: MIT
-description-file: upstream/README.md
+description-file: README.md
 url: https://nlohmann.github.io/json/
 package-url: https://github.com/build2-packaging/nlohmann-json
 package-email: mjklaim@gmail.com
