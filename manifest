@@ -9,3 +9,6 @@ package-url: https://github.com/build2-packaging/nlohmann-json
 package-email: mjklaim@gmail.com
 depends: * build2 >= 0.12.0
 depends: * bpkg >= 0.12.0
+
+depends: doctest ^2.4.6
+

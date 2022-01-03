@@ -1,6 +1,6 @@
 import libs = nlohmann-json%lib{json}
 
-exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
+./ : exe{driver}: {hxx ixx txx cxx}{**} $libs testscript{**}
 
 if($cxx.class != 'msvc')
 {

@@ -1,1 +1,27 @@
-./: {*/ -build/}
+./ : basics/
+
+import doctest = doctest%lib{doctest}
+import json = nlohmann-json%lib{json}
+
+./ : libue{doctest_main} : src/cxx{unit} $doctest
+
+if($cxx.class != 'msvc')
+{
+    cxx.coptions += -Wno-unused-comparison -Wno-unused-result -Wno-unused-variable  # Ignore warnings for now.
+}
+else
+{
+    cxx.coptions += /W4 /wd4566 /wd4996 /bigobj
+}
+
+cxx.poptions += -DDOCTEST_CONFIG_SUPER_FAST_ASSERTS
+cxx.poptions += "-I$src_base/src"
+cxx.poptions += "-I$src_base/fifo_map" # TODO: replace this by a proper dependency once fifo_map is packaged
+cxx.poptions += "-I$src_base/compatibility" # The original repo does something here because of the transition frome Catch2 to doctest
+
+for test_file : src/cxx{unit-*}
+{
+    test_name = $name(test_file)
+    ./ : exe{$test_name} : $test_file $doctest $json
+
+}
